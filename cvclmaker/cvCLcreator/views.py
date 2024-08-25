@@ -10,8 +10,8 @@ from .models import UploadedFile
 import os
 
 context = [
-        {'label': 'Get Cover Letter', 'link': 'getCLtemplate'},
-        {'label': 'Upload Files', 'link': 'upload'},
+        {'label': 'Get Cover Letter', 'link': '/getCLtemplate/'},
+        {'label': 'Upload Files', 'link': '/upload/'},
     ]
 
 
@@ -46,7 +46,7 @@ def upload_file(request):
     else:
         form = FileForm()
     
-    return render(request, 'pages/create.html', {'form': form})
+    return render(request, 'pages/create.html', {'form': form, 'context': context})
 
 def download_file(request, file_id):
     file = get_object_or_404(UploadedFile, id=file_id)
